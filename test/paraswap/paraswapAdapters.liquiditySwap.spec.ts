@@ -13,7 +13,7 @@ import {
   parseUnitsFromToken,
   tEthereumAddress,
   waitForTx,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { MockParaSwapAugustusRegistry__factory, MockParaSwapAugustus__factory } from '../../types';
 import { MockParaSwapAugustus } from '../../types/MockParaSwapAugustus';
 import { MockParaSwapAugustusRegistry } from '../../types/MockParaSwapAugustusRegistry';
@@ -1024,7 +1024,7 @@ makeSuite('ParaSwap adapters', (testEnv: TestEnv) => {
         await pool.deposit(dai.address, collateralAmount, borrowerAddress, 0);
         await pool
           .connect(borrower)
-          .borrow(weth.address, parseEther('5000'), 2, 0, borrowerAddress);
+          .borrow(weth.address, parseEther('5000'), 2, 0, borrowerAddress, []);
       });
 
       it('should correctly swap tokens and deposit the out tokens in the pool', async () => {
@@ -2306,7 +2306,7 @@ makeSuite('ParaSwap adapters', (testEnv: TestEnv) => {
         await pool.deposit(dai.address, collateralAmount, borrowerAddress, 0);
         await pool
           .connect(borrower)
-          .borrow(weth.address, parseEther('5000'), 2, 0, borrowerAddress);
+          .borrow(weth.address, parseEther('5000'), 2, 0, borrowerAddress, []);
       });
 
       it('should correctly swap tokens and deposit the out tokens in the pool', async () => {

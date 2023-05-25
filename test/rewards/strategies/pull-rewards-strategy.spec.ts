@@ -4,7 +4,7 @@ import {
   PullRewardsTransferStrategy__factory,
   waitForTx,
   ZERO_ADDRESS,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { RANDOM_ADDRESSES } from '../../helpers/constants';
 import hre from 'hardhat';
 import { parseEther } from '@ethersproject/units';

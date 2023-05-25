@@ -8,7 +8,7 @@ import {
   parseUnitsFromToken,
   StableDebtToken,
   tEthereumAddress,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import {
   MockParaSwapAugustusRegistry__factory,
   MockParaSwapAugustus__factory,
@@ -146,7 +146,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
             .toFixed(0)
         );
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -247,7 +247,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -362,7 +362,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         await mockAugustus.expectBuy(
           weth.address,
@@ -425,7 +425,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 2, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 2, 0, userAddress, []);
 
         await mockAugustus.expectBuy(
           weth.address,
@@ -557,7 +557,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const bigMaxAmountToSwap = amountWETHtoSwap.mul(2);
         await mockAugustus.expectBuy(
@@ -633,7 +633,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -736,7 +736,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -844,7 +844,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 2, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 2, 0, userAddress, []);
 
         const daiStableVariableTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -953,7 +953,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -1045,7 +1045,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -1209,7 +1209,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const bigMaxAmountToSwap = amountWETHtoSwap.mul(2);
         await aWETH.connect(user).approve(paraswapRepayAdapter.address, bigMaxAmountToSwap);
@@ -1279,7 +1279,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -1377,7 +1377,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -1476,7 +1476,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 1, 0, userAddress, []);
 
         const daiStableDebtTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)
@@ -1570,7 +1570,7 @@ makeSuite('Paraswap adapters', (testEnv: TestEnv) => {
         );
 
         // Open user Debt
-        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 2, 0, userAddress);
+        await pool.connect(user).borrow(dai.address, expectedDaiAmount, 2, 0, userAddress, []);
 
         const daiStableVariableTokenAddress = (
           await helpersContract.getReserveTokensAddresses(dai.address)

@@ -1,4 +1,4 @@
-import { increaseTime, waitForTx, advanceBlock, getBlockTimestamp } from '@aave/deploy-v3';
+import { increaseTime, waitForTx, advanceBlock, getBlockTimestamp } from '@anirudhtx/aave-v3-deploy-pyth';
 import { BigNumber } from 'ethers';
 const { expect } = require('chai');
 

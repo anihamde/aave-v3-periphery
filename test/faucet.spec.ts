@@ -1,7 +1,7 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { expect } from 'chai';
 import { parseEther } from 'ethers/lib/utils';
-import { ONE_ADDRESS, evmRevert, evmSnapshot, waitForTx } from '@aave/deploy-v3';
+import { ONE_ADDRESS, evmRevert, evmSnapshot, waitForTx } from '@anirudhtx/aave-v3-deploy-pyth';
 import { makeSuite, TestEnv } from './helpers/make-suite';
 import { Ownable__factory, TestnetERC20__factory } from '../types';
 

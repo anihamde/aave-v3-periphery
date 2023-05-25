@@ -1,6 +1,6 @@
 import hre from 'hardhat';
 import { fail } from 'assert';
-import { increaseTime, waitForTx, getBlockTimestamp } from '@aave/deploy-v3';
+import { increaseTime, waitForTx, getBlockTimestamp } from '@anirudhtx/aave-v3-deploy-pyth';
 import { makeSuite } from '../helpers/make-suite';
 import { eventLogChecker } from './helpers/comparator-engine';
 import {
