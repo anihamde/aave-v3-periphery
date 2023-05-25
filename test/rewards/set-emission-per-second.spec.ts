@@ -1,4 +1,4 @@
-import { getBlockTimestamp, increaseTime, ONE_ADDRESS, waitForTx } from '@aave/deploy-v3';
+import { getBlockTimestamp, increaseTime, ONE_ADDRESS, waitForTx } from '@anirudhtx/aave-v3-deploy-pyth';
 import { BigNumberish } from 'ethers';
 import { makeSuite, TestEnv } from '../helpers/make-suite';
 import { CompareRules } from './helpers/comparator-engine';

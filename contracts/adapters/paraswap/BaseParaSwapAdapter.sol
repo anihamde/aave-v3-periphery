@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.10;
 
-import {DataTypes} from '@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol';
-import {FlashLoanSimpleReceiverBase} from '@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol';
-import {GPv2SafeERC20} from '@aave/core-v3/contracts/dependencies/gnosis/contracts/GPv2SafeERC20.sol';
-import {IERC20} from '@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol';
-import {IERC20Detailed} from '@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol';
-import {IERC20WithPermit} from '@aave/core-v3/contracts/interfaces/IERC20WithPermit.sol';
-import {IPoolAddressesProvider} from '@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol';
-import {IPriceOracleGetter} from '@aave/core-v3/contracts/interfaces/IPriceOracleGetter.sol';
-import {SafeMath} from '@aave/core-v3/contracts/dependencies/openzeppelin/contracts/SafeMath.sol';
-import {Ownable} from '@aave/core-v3/contracts/dependencies/openzeppelin/contracts/Ownable.sol';
+import {DataTypes} from '@anirudhtx/aave-core-v3/contracts/protocol/libraries/types/DataTypes.sol';
+import {FlashLoanSimpleReceiverBase} from '@anirudhtx/aave-core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol';
+import {GPv2SafeERC20} from '@anirudhtx/aave-core-v3/contracts/dependencies/gnosis/contracts/GPv2SafeERC20.sol';
+import {IERC20} from '@anirudhtx/aave-core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol';
+import {IERC20Detailed} from '@anirudhtx/aave-core-v3/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol';
+import {IERC20WithPermit} from '@anirudhtx/aave-core-v3/contracts/interfaces/IERC20WithPermit.sol';
+import {IPoolAddressesProvider} from '@anirudhtx/aave-core-v3/contracts/interfaces/IPoolAddressesProvider.sol';
+import {IPriceOracleGetter} from '@anirudhtx/aave-core-v3/contracts/interfaces/IPriceOracleGetter.sol';
+import {SafeMath} from '@anirudhtx/aave-core-v3/contracts/dependencies/openzeppelin/contracts/SafeMath.sol';
+import {Ownable} from '@anirudhtx/aave-core-v3/contracts/dependencies/openzeppelin/contracts/Ownable.sol';
 
 /**
  * @title BaseParaSwapAdapter
@@ -50,7 +50,7 @@ abstract contract BaseParaSwapAdapter is FlashLoanSimpleReceiverBase, Ownable {
   );
 
   constructor(IPoolAddressesProvider addressesProvider) FlashLoanSimpleReceiverBase(addressesProvider) {
-    ORACLE = IPriceOracleGetter(addressesProvider.getPriceOracle());
+    ORACLE = IPriceOracleGetter(payable(addressesProvider.getPriceOracle()));
   }
 
   /**
@@ -125,7 +125,8 @@ abstract contract BaseParaSwapAdapter is FlashLoanSimpleReceiverBase, Ownable {
     reserveAToken.safeTransferFrom(user, address(this), amount);
 
     // withdraw reserve
-    require(POOL.withdraw(reserve, amount, address(this)) == amount, 'UNEXPECTED_AMOUNT_WITHDRAWN');
+    bytes[] memory emptyUpdate = new bytes[](0);
+    require(POOL.withdraw(reserve, amount, address(this), emptyUpdate) == amount, 'UNEXPECTED_AMOUNT_WITHDRAWN');
   }
 
   /**

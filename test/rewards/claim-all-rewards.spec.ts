@@ -8,7 +8,7 @@ import {
   MAX_UINT_AMOUNT,
   ERC20__factory,
   advanceTimeAndBlock,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { RANDOM_ADDRESSES } from '../helpers/constants';
 import {
   assetDataComparator,

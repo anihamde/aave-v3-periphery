@@ -5,7 +5,7 @@ import {
   evmSnapshot,
   evmRevert,
   ONE_ADDRESS,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { makeSuite, TestEnv } from '../helpers/make-suite';
 import { deployMockContract } from '@ethereum-waffle/mock-contract';
 

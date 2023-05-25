@@ -1,4 +1,4 @@
-import { increaseTime, waitForTx, advanceBlock, getBlockTimestamp } from '@aave/deploy-v3';
+import { increaseTime, waitForTx, advanceBlock, getBlockTimestamp } from '@anirudhtx/aave-v3-deploy-pyth';
 const { expect } = require('chai');
 
 import { makeSuite } from '../helpers/make-suite';

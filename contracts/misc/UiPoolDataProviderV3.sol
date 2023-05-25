@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.10;
 
-import {IERC20Detailed} from '@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol';
-import {IPoolAddressesProvider} from '@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol';
-import {IPool} from '@aave/core-v3/contracts/interfaces/IPool.sol';
-import {IAaveOracle} from '@aave/core-v3/contracts/interfaces/IAaveOracle.sol';
-import {IAToken} from '@aave/core-v3/contracts/interfaces/IAToken.sol';
-import {IVariableDebtToken} from '@aave/core-v3/contracts/interfaces/IVariableDebtToken.sol';
-import {IStableDebtToken} from '@aave/core-v3/contracts/interfaces/IStableDebtToken.sol';
-import {DefaultReserveInterestRateStrategy} from '@aave/core-v3/contracts/protocol/pool/DefaultReserveInterestRateStrategy.sol';
-import {AaveProtocolDataProvider} from '@aave/core-v3/contracts/misc/AaveProtocolDataProvider.sol';
-import {WadRayMath} from '@aave/core-v3/contracts/protocol/libraries/math/WadRayMath.sol';
-import {ReserveConfiguration} from '@aave/core-v3/contracts/protocol/libraries/configuration/ReserveConfiguration.sol';
-import {UserConfiguration} from '@aave/core-v3/contracts/protocol/libraries/configuration/UserConfiguration.sol';
-import {DataTypes} from '@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol';
+import {IERC20Detailed} from '@anirudhtx/aave-core-v3/contracts/dependencies/openzeppelin/contracts/IERC20Detailed.sol';
+import {IPoolAddressesProvider} from '@anirudhtx/aave-core-v3/contracts/interfaces/IPoolAddressesProvider.sol';
+import {IPool} from '@anirudhtx/aave-core-v3/contracts/interfaces/IPool.sol';
+import {IAaveOracle} from '@anirudhtx/aave-core-v3/contracts/interfaces/IAaveOracle.sol';
+import {IAToken} from '@anirudhtx/aave-core-v3/contracts/interfaces/IAToken.sol';
+import {IVariableDebtToken} from '@anirudhtx/aave-core-v3/contracts/interfaces/IVariableDebtToken.sol';
+import {IStableDebtToken} from '@anirudhtx/aave-core-v3/contracts/interfaces/IStableDebtToken.sol';
+import {DefaultReserveInterestRateStrategy} from '@anirudhtx/aave-core-v3/contracts/protocol/pool/DefaultReserveInterestRateStrategy.sol';
+import {AaveProtocolDataProvider} from '@anirudhtx/aave-core-v3/contracts/misc/AaveProtocolDataProvider.sol';
+import {WadRayMath} from '@anirudhtx/aave-core-v3/contracts/protocol/libraries/math/WadRayMath.sol';
+import {ReserveConfiguration} from '@anirudhtx/aave-core-v3/contracts/protocol/libraries/configuration/ReserveConfiguration.sol';
+import {UserConfiguration} from '@anirudhtx/aave-core-v3/contracts/protocol/libraries/configuration/UserConfiguration.sol';
+import {DataTypes} from '@anirudhtx/aave-core-v3/contracts/protocol/libraries/types/DataTypes.sol';
 import {IEACAggregatorProxy} from './interfaces/IEACAggregatorProxy.sol';
 import {IERC20DetailedBytes} from './interfaces/IERC20DetailedBytes.sol';
 import {IUiPoolDataProviderV3} from './interfaces/IUiPoolDataProviderV3.sol';
@@ -52,7 +52,7 @@ contract UiPoolDataProviderV3 is IUiPoolDataProviderV3 {
     override
     returns (AggregatedReserveData[] memory, BaseCurrencyInfo memory)
   {
-    IAaveOracle oracle = IAaveOracle(provider.getPriceOracle());
+    IAaveOracle oracle = IAaveOracle(payable(provider.getPriceOracle()));
     IPool pool = IPool(provider.getPool());
     AaveProtocolDataProvider poolDataProvider = AaveProtocolDataProvider(
       provider.getPoolDataProvider()
@@ -86,7 +86,6 @@ contract UiPoolDataProviderV3 is IUiPoolDataProviderV3 {
       reserveData.priceInMarketReferenceCurrency = oracle.getAssetPrice(
         reserveData.underlyingAsset
       );
-      reserveData.priceOracle = oracle.getSourceOfAsset(reserveData.underlyingAsset);
       reserveData.availableLiquidity = IERC20Detailed(reserveData.underlyingAsset).balanceOf(
         reserveData.aTokenAddress
       );

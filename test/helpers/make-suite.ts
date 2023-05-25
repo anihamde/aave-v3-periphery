@@ -51,7 +51,7 @@ import {
   StakedTokenV2Rev3,
   impersonateAddress,
   getEmissionManager,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { deployATokenMock } from '../rewards/helpers/deploy';
 import { parseEther } from 'ethers/lib/utils';
 import { EmissionManager, EmissionManager__factory } from '../../types';

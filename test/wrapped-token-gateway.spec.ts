@@ -7,7 +7,7 @@ import {
   getVariableDebtToken,
   MAX_UINT_AMOUNT,
   waitForTx,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 
 declare let hre: HardhatRuntimeEnvironment;
@@ -152,7 +152,7 @@ makeSuite('Use native ETH at Pool via WrappedTokenGatewayV3', (testEnv: TestEnv)
 
     // Borrow WETH with WETH as collateral
     await waitForTx(
-      await pool.connect(user.signer).borrow(weth.address, borrowSize, '1', '0', user.address)
+      await pool.connect(user.signer).borrow(weth.address, borrowSize, '1', '0', user.address, [])
     );
 
     const debtBalance = await stableDebtToken.balanceOf(user.address);
@@ -175,7 +175,7 @@ makeSuite('Use native ETH at Pool via WrappedTokenGatewayV3', (testEnv: TestEnv)
 
     // Withdraw DAI
     await aDai.connect(user.signer).approve(pool.address, MAX_UINT_AMOUNT);
-    await pool.connect(user.signer).withdraw(dai.address, MAX_UINT_AMOUNT, user.address);
+    await pool.connect(user.signer).withdraw(dai.address, MAX_UINT_AMOUNT, user.address, []);
   });
 
   it('Borrow variable WETH and Full Repay with ETH', async () => {
@@ -202,7 +202,7 @@ makeSuite('Use native ETH at Pool via WrappedTokenGatewayV3', (testEnv: TestEnv)
 
     // Borrow WETH with WETH as collateral
     await waitForTx(
-      await pool.connect(user.signer).borrow(weth.address, borrowSize, '2', '0', user.address)
+      await pool.connect(user.signer).borrow(weth.address, borrowSize, '2', '0', user.address, [])
     );
 
     const debtBalance = await varDebtToken.balanceOf(user.address);

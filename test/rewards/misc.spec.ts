@@ -4,7 +4,7 @@ import {
   MAX_UINT_AMOUNT,
   ZERO_ADDRESS,
   deployReservesSetupHelper,
-} from '@aave/deploy-v3';
+} from '@anirudhtx/aave-v3-deploy-pyth';
 import { expect } from 'chai';
 import { makeSuite } from '../helpers/make-suite';
 import { RANDOM_ADDRESSES } from '../helpers/constants';
